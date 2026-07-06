@@ -359,7 +359,7 @@
                                     <p class="text-slate-500 dark:text-slate-400 italic text-sm">Díky jasným detailům dostanete ty nejlepší nabídky bez zbytečného dohadování.</p>
                                 </div>
                                 <div class="flex flex-col sm:flex-row items-center justify-center gap-4 w-full">
-                                    <a href="https://app.remexo.cz" class="w-full sm:w-auto inline-block text-center bg-remexo-500 hover:bg-remexo-600 text-white px-10 py-4 rounded-full font-bold text-lg transition-transform duration-300 hover:scale-105 shadow-xl">Publikovat na Remexo</a>
+                                    <button type="button" onclick="window.goToAppWithPoptavka()" class="w-full sm:w-auto bg-remexo-500 hover:bg-remexo-600 text-white px-10 py-4 rounded-full font-bold text-lg transition-transform duration-300 hover:scale-105 shadow-xl">Publikovat na Remexo</button>
                                     <button type="button" id="poptavka-reset-btn" class="w-full sm:w-auto text-slate-500 dark:text-slate-400 hover:text-remexo-500 dark:hover:text-remexo-500 px-6 py-4 font-bold transition duration-300 underline">Vytvořit další poptávku</button>
                                 </div>
                             </div>
@@ -1025,6 +1025,25 @@
             document.getElementById('poptavka-initial-form').classList.remove('hidden');
             window.scrollTo({ top: document.getElementById('ai-poptavka').offsetTop - 100, behavior: 'smooth' });
         });
+
+        // --- PŘEDÁNÍ POPTÁVKY DO APLIKACE ---
+        window.goToAppWithPoptavka = function() {
+            const getText = (id) => { const el = document.getElementById(id); return el ? el.innerText.trim() : ""; };
+            const data = {
+                title: getText("pop-nazev"),
+                kategorie: getText("pop-kategorie"),
+                popis: getText("pop-popis"),
+                nalehavost: getText("pop-nalehavost"),
+                cena: getText("pop-cena")
+            };
+            try {
+                const json = JSON.stringify(data);
+                const encoded = btoa(unescape(encodeURIComponent(json)));
+                window.location.href = "https://app.remexo.cz/?poptavka=" + encodeURIComponent(encoded);
+            } catch(e) {
+                window.location.href = "https://app.remexo.cz";
+            }
+        };
 
         // --- NEWSLETTER ---
         const newsletterArea = document.getElementById('newsletter-area');
