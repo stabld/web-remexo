@@ -911,12 +911,18 @@
             }
         });
 
-        function appendPoptavkaChat(role, text) {
+        function appendPoptavkaChat(role, text, photoDataUrl) {
             const chatMessages = document.getElementById('poptavka-chat-messages');
             const msg = document.createElement('div');
             if (role === 'user') {
                 msg.className = 'poptavka-bubble-user text-lg leading-relaxed shadow-sm font-medium';
                 msg.innerText = text;
+                if (photoDataUrl) {
+                    const img = document.createElement('img');
+                    img.src = photoDataUrl;
+                    img.className = 'mt-3 rounded-xl max-h-48 w-auto border border-white/30 shadow-sm';
+                    msg.appendChild(img);
+                }
             } else {
                 msg.className = 'poptavka-bubble-ai text-lg leading-relaxed shadow-sm flex items-start gap-4';
                 msg.innerHTML = `<div class="w-10 h-10 rounded-full bg-remexo-500 flex items-center justify-center text-white shrink-0 mt-1"><i class="fa-solid fa-hard-hat"></i></div><div>${text}</div>`;
@@ -988,7 +994,7 @@
             document.getElementById('poptavka-initial-form').classList.add('hidden');
             document.getElementById('poptavka-chat-box').classList.remove('hidden');
             poptavkaHistoryText = text || "Posílám fotografii k analýze.";
-            appendPoptavkaChat('user', poptavkaHistoryText);
+            appendPoptavkaChat('user', poptavkaHistoryText, currentBase64Image ? photoPreview.src : null);
             await processPoptavka(poptavkaHistoryText);
         });
 
