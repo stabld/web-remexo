@@ -184,16 +184,19 @@
                 </a>
             </div>
         </div>
-        <nav class="fixed w-full z-50 glass-nav">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="flex justify-between items-center h-20">
-                    <!-- LOGO: Přidáno 'mr-6 xl:mr-auto' pro odsunutí menu a zarovnání loga více doleva -->
-                    <div class="flex-shrink-0 flex items-center gap-3 cursor-pointer mr-6 xl:mr-auto" onclick="window.scrollTo(0,0)">
-                        <img src="/logo.png" alt="Remexo Logo" class="h-14 object-contain">
+       <nav class="fixed w-full z-50 glass-nav">
+            <div class="w-full max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex justify-between items-center h-20 gap-4 lg:gap-8">
+                    
+                    <!-- LEVÁ ČÁST: Logo odtlačené doleva -->
+                    <div class="flex-1 flex justify-start items-center">
+                        <div class="flex-shrink-0 cursor-pointer" onclick="window.scrollTo(0,0)">
+                            <img src="/logo.png" alt="Remexo Logo" class="h-14 object-contain">
+                        </div>
                     </div>
                     
-                    <!-- MENU: Zmenšení mezer na lg displejích (space-x-4), aby se dlouhé menu vešlo -->
-                    <div class="hidden lg:flex space-x-4 xl:space-x-7 items-center" id="nav-links">
+                    <!-- STŘED: Navigace v jednom řádku (vycentrováno) -->
+                    <div class="hidden lg:flex space-x-4 xl:space-x-7 items-center justify-center shrink-0" id="nav-links">
                         <a href="#hero" class="nav-item relative text-sm font-bold whitespace-nowrap text-slate-600 dark:text-slate-400 hover:text-remexo-500 transition">O nás</a>
                         <a href="#jak-to-funguje" class="nav-item relative text-sm font-bold whitespace-nowrap text-slate-600 dark:text-slate-400 hover:text-remexo-500 transition">Jak to funguje</a>
                         <a href="#remesla" class="nav-item relative text-sm font-bold whitespace-nowrap text-slate-600 dark:text-slate-400 hover:text-remexo-500 transition">Co Remexo řeší</a>
@@ -205,7 +208,8 @@
                         <a href="#kontakt" class="nav-item relative text-sm font-bold whitespace-nowrap text-slate-600 dark:text-slate-400 hover:text-remexo-500 transition">Kontakt</a>
                     </div>
                     
-                    <div class="flex items-center gap-4 ml-4 xl:ml-8">
+                    <!-- PRAVÁ ČÁST: Tlačítka odtlačená doprava -->
+                    <div class="flex-1 flex justify-end items-center gap-4">
                         <button id="theme-toggle" class="p-2 text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-full transition-colors">
                             <i id="theme-toggle-dark-icon" class="fa-solid fa-moon hidden text-xl"></i>
                             <i id="theme-toggle-light-icon" class="fa-solid fa-sun hidden text-xl"></i>
