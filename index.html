@@ -255,23 +255,53 @@
 
         <section id="jak-to-funguje" class="py-24 bg-slate-50 dark:bg-slate-900 border-y border-slate-100 dark:border-slate-800 relative z-10">
             <div class="max-w-7xl mx-auto px-4">
-                <h2 class="text-4xl font-extrabold mb-16 dark:text-white">Vyřeš to ve 3 krocích</h2>
-                <div class="grid md:grid-cols-3 gap-8 relative z-20">
-                    <div class="bg-white dark:bg-slate-800 p-10 rounded-3xl border border-slate-200 dark:border-slate-700 shadow-sm transition-all duration-300 hover:shadow-xl hover:-translate-y-2 hover:scale-105 group cursor-default relative z-20">
-                        <div class="w-14 h-14 bg-remexo-50 dark:bg-remexo-500 text-remexo-600 dark:text-white rounded-2xl flex items-center justify-center text-2xl font-bold mb-8 group-hover:scale-110 transition-transform duration-300">1</div>
-                        <h4 class="text-2xl font-bold mb-4 dark:text-white">Popíšeš problém</h4>
-                        <p class="text-slate-500 dark:text-slate-400 text-lg leading-relaxed mt-4">Např. „nefunguje zásuvka" nebo „teče kohoutek".</p>
+                <!-- Úprava nadpisu na 4 kroky a vycentrování -->
+                <h2 class="text-4xl font-extrabold mb-8 text-center dark:text-white">Vyřeš to ve 4 krocích</h2>
+                
+                <!-- Změna na 4 sloupce (lg:grid-cols-4), na tabletu 2 sloupce (sm:grid-cols-2) -->
+                <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-12 relative z-20 mt-16">
+                    
+                    <!-- Krok 1 -->
+                    <div class="bg-white dark:bg-slate-800 p-8 pt-10 rounded-3xl border border-slate-200 dark:border-slate-700 shadow-sm transition-all duration-300 hover:shadow-xl hover:-translate-y-2 group cursor-default relative z-20 flex flex-col items-center text-center mt-6 lg:mt-0">
+                        <div class="absolute -top-6 w-12 h-12 bg-remexo-500 text-white rounded-2xl flex items-center justify-center text-xl font-bold shadow-lg">1</div>
+                        <div class="w-32 h-32 mb-6 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                            <!-- Sem přijde obrázek (3) -->
+                            <img src="/krok-1.png" alt="Vyfotíš problém" class="w-full h-full object-contain">
+                        </div>
+                        <h4 class="text-xl font-bold mb-3 dark:text-white">Vyfotíš problém.</h4>
                     </div>
-                    <div class="bg-white dark:bg-slate-800 p-10 rounded-3xl border border-slate-200 dark:border-slate-700 shadow-sm transition-all duration-300 hover:shadow-xl hover:-translate-y-2 hover:scale-105 group cursor-default relative z-20">
-                        <div class="w-14 h-14 bg-remexo-50 dark:bg-remexo-500 text-remexo-600 dark:text-white rounded-2xl flex items-center justify-center text-2xl font-bold mb-8 group-hover:scale-110 transition-transform duration-300">2</div>
-                        <h4 class="text-2xl font-bold mb-4 dark:text-white">My najdeme řemeslníka</h4>
-                        <p class="text-slate-500 dark:text-slate-400 text-lg leading-relaxed mt-4">Ověřeného a vhodného pro tvůj problém.</p>
+
+                    <!-- Krok 2 -->
+                    <div class="bg-white dark:bg-slate-800 p-8 pt-10 rounded-3xl border border-slate-200 dark:border-slate-700 shadow-sm transition-all duration-300 hover:shadow-xl hover:-translate-y-2 group cursor-default relative z-20 flex flex-col items-center text-center mt-6 lg:mt-0">
+                        <div class="absolute -top-6 w-12 h-12 bg-remexo-500 text-white rounded-2xl flex items-center justify-center text-xl font-bold shadow-lg">2</div>
+                        <div class="w-32 h-32 mb-6 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                            <!-- Sem přijde obrázek (2) -->
+                            <img src="/krok-2.png" alt="Bořek zjistí co je potřeba" class="w-full h-full object-contain">
+                        </div>
+                        <h4 class="text-xl font-bold mb-3 dark:text-white">Bořek zjistí, co je potřeba opravit.</h4>
                     </div>
-                    <div class="bg-white dark:bg-slate-800 p-10 rounded-3xl border border-slate-200 dark:border-slate-700 shadow-sm transition-all duration-300 hover:shadow-xl hover:-translate-y-2 hover:scale-105 group cursor-default relative z-20">
-                        <div class="w-14 h-14 bg-remexo-50 dark:bg-remexo-500 text-remexo-600 dark:text-white rounded-2xl flex items-center justify-center text-2xl font-bold mb-8 group-hover:scale-110 transition-transform duration-300">3</div>
-                        <h4 class="text-2xl font-bold mb-4 dark:text-white">Domluvíš se na realizaci</h4>
-                        <p class="text-slate-500 dark:text-slate-400 text-lg leading-relaxed mt-4">Jednoduše, bez stresu.</p>
+
+                    <!-- Krok 3 -->
+                    <div class="bg-white dark:bg-slate-800 p-8 pt-10 rounded-3xl border border-slate-200 dark:border-slate-700 shadow-sm transition-all duration-300 hover:shadow-xl hover:-translate-y-2 group cursor-default relative z-20 flex flex-col items-center text-center mt-6 lg:mt-0">
+                        <div class="absolute -top-6 w-12 h-12 bg-remexo-500 text-white rounded-2xl flex items-center justify-center text-xl font-bold shadow-lg">3</div>
+                        <div class="w-32 h-32 mb-6 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                            <!-- Sem přijde obrázek bez čísla -->
+                            <img src="/krok-3.png" alt="Ověření řemeslníci" class="w-full h-full object-contain">
+                        </div>
+                        <h4 class="text-xl font-bold mb-3 dark:text-white">Ověření řemeslníci pošlou nabídky.</h4>
                     </div>
+
+                    <!-- Krok 4 -->
+                    <div class="bg-white dark:bg-slate-800 p-8 pt-10 rounded-3xl border border-slate-200 dark:border-slate-700 shadow-sm transition-all duration-300 hover:shadow-xl hover:-translate-y-2 group cursor-default relative z-20 flex flex-col items-center text-center mt-6 lg:mt-0">
+                        <div class="absolute -top-6 w-12 h-12 bg-remexo-500 text-white rounded-2xl flex items-center justify-center text-xl font-bold shadow-lg">4</div>
+                        <div class="w-32 h-32 mb-6 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                            <!-- Sem přijde obrázek (1) -->
+                            <img src="/krok-4.png" alt="Vybereš a zaplatíš" class="w-full h-full object-contain">
+                        </div>
+                        <h4 class="text-xl font-bold mb-3 dark:text-white">Vybereš si nejlepší nabídku.</h4>
+                        <p class="text-slate-500 dark:text-slate-400 text-base leading-relaxed">Zaplatíš bezpečně.</p>
+                    </div>
+
                 </div>
             </div>
         </section>
