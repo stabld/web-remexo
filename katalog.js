@@ -86,7 +86,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Vytvoření panelu pro detaily (skrytý ve výchozím stavu)
     const detailDiv = document.createElement('div');
     detailDiv.id = 'katalog-detail';
-    detailDiv.className = 'mt-8 bg-fixit-50 dark:bg-slate-800 rounded-3xl border border-fixit-500/30 overflow-hidden transition-all duration-500 ease-in-out opacity-0 translate-y-[-20px]';
+    detailDiv.className = 'mt-8 bg-remexo-50 dark:bg-slate-800 rounded-3xl border border-remexo-500/30 overflow-hidden transition-all duration-500 ease-in-out opacity-0 translate-y-[-20px]';
     detailDiv.style.maxHeight = '0px';
 
     let activeId = null;
@@ -94,11 +94,11 @@ document.addEventListener('DOMContentLoaded', () => {
     // Vykreslení jednotlivých dlaždic
     katalogData.forEach(item => {
         const tile = document.createElement('div');
-        tile.className = 'group bg-slate-50 dark:bg-slate-800 hover:bg-fixit-500 border border-slate-200 dark:border-slate-700 rounded-3xl p-6 flex flex-col items-center gap-4 cursor-pointer transition-all duration-300 hover:scale-105 hover:shadow-xl hover:border-fixit-500 tile-item';
+        tile.className = 'group bg-slate-50 dark:bg-slate-800 hover:bg-remexo-500 border border-slate-200 dark:border-slate-700 rounded-3xl p-6 flex flex-col items-center gap-4 cursor-pointer transition-all duration-300 hover:scale-105 hover:shadow-xl hover:border-remexo-500 tile-item';
         tile.dataset.id = item.id;
         
         tile.innerHTML = `
-            <div class="w-14 h-14 bg-white dark:bg-slate-700 group-hover:bg-fixit-600 rounded-2xl flex items-center justify-center text-fixit-500 group-hover:text-white text-2xl transition-colors shadow-sm tile-icon-container">
+            <div class="w-14 h-14 bg-white dark:bg-slate-700 group-hover:bg-remexo-600 rounded-2xl flex items-center justify-center text-remexo-500 group-hover:text-white text-2xl transition-colors shadow-sm tile-icon-container">
                 <i class="fa-solid ${item.icon}"></i>
             </div>
             <span class="font-bold text-sm text-slate-700 dark:text-slate-300 group-hover:text-white text-center transition-colors">${item.title}</span>
@@ -110,14 +110,14 @@ document.addEventListener('DOMContentLoaded', () => {
             
             // Reset stylů všech dlaždic
             document.querySelectorAll('.tile-item').forEach(t => {
-                t.classList.remove('bg-fixit-500', 'border-fixit-500', 'scale-105', 'shadow-xl');
+                t.classList.remove('bg-remexo-500', 'border-remexo-500', 'scale-105', 'shadow-xl');
                 t.classList.add('bg-slate-50', 'dark:bg-slate-800');
                 const text = t.querySelector('span');
                 text.classList.remove('text-white');
                 text.classList.add('text-slate-700', 'dark:text-slate-300');
                 const iconBox = t.querySelector('.tile-icon-container');
-                iconBox.classList.remove('bg-fixit-600', 'text-white');
-                iconBox.classList.add('bg-white', 'dark:bg-slate-700', 'text-fixit-500');
+                iconBox.classList.remove('bg-remexo-600', 'text-white');
+                iconBox.classList.add('bg-white', 'dark:bg-slate-700', 'text-remexo-500');
             });
 
             if (isClosing) {
@@ -132,23 +132,23 @@ document.addEventListener('DOMContentLoaded', () => {
                 
                 // Zvýraznění aktivní dlaždice
                 tile.classList.remove('bg-slate-50', 'dark:bg-slate-800');
-                tile.classList.add('bg-fixit-500', 'border-fixit-500', 'scale-105', 'shadow-xl');
+                tile.classList.add('bg-remexo-500', 'border-remexo-500', 'scale-105', 'shadow-xl');
                 tile.querySelector('span').classList.remove('text-slate-700', 'dark:text-slate-300');
                 tile.querySelector('span').classList.add('text-white');
-                tile.querySelector('.tile-icon-container').classList.remove('bg-white', 'dark:bg-slate-700', 'text-fixit-500');
-                tile.querySelector('.tile-icon-container').classList.add('bg-fixit-600', 'text-white');
+                tile.querySelector('.tile-icon-container').classList.remove('bg-white', 'dark:bg-slate-700', 'text-remexo-500');
+                tile.querySelector('.tile-icon-container').classList.add('bg-remexo-600', 'text-white');
 
                 // Vykreslení obsahu detailu
                 const tasksHtml = item.tasks.map(task => `
                     <li class="flex items-start gap-3 text-slate-700 dark:text-slate-300 text-lg">
-                        <i class="fa-solid fa-check text-fixit-500 mt-1"></i>
+                        <i class="fa-solid fa-check text-remexo-500 mt-1"></i>
                         <span>${task}</span>
                     </li>
                 `).join('');
 
                 detailDiv.innerHTML = `
                     <div class="p-8 md:p-12 flex flex-col md:flex-row gap-8 items-center md:items-start">
-                        <div class="w-24 h-24 shrink-0 bg-white dark:bg-slate-700 text-fixit-500 rounded-3xl flex items-center justify-center text-4xl shadow-md border border-slate-100 dark:border-slate-600">
+                        <div class="w-24 h-24 shrink-0 bg-white dark:bg-slate-700 text-remexo-500 rounded-3xl flex items-center justify-center text-4xl shadow-md border border-slate-100 dark:border-slate-600">
                             <i class="fa-solid ${item.icon}"></i>
                         </div>
                         <div class="flex-grow">
@@ -156,7 +156,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             <ul class="grid sm:grid-cols-2 gap-4 mb-8">
                                 ${tasksHtml}
                             </ul>
-                            <a href="#ai-poptavka" onclick="document.getElementById('poptavka-input').value = 'Potřebuji poptat: ${item.title} - ';" class="inline-block bg-fixit-500 hover:bg-fixit-600 text-white px-8 py-4 rounded-xl font-bold transition hover:scale-105 shadow-lg">
+                            <a href="#ai-poptavka" onclick="document.getElementById('poptavka-input').value = 'Potřebuji poptat: ${item.title} - ';" class="inline-block bg-remexo-500 hover:bg-remexo-600 text-white px-8 py-4 rounded-xl font-bold transition hover:scale-105 shadow-lg">
                                 Zadat poptávku zdarma
                             </a>
                         </div>
