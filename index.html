@@ -1037,7 +1037,7 @@
             const systemPrompt = "Jsi Bořek, profesionální technik. Vytvoř zadání pro řemeslníka.\n" +
                                  "ODPOVÍDEJ PŘESNĚ V TOMTO JSON FORMÁTU BEZ DALŠÍHO TEXTU KOLEM:\n" +
                                  "Pokud se ptáš na detaily: {\"status\": \"question\", \"message\": \"tvoje otázka\"}\n" +
-                                 "Pokud máš vše: {\"status\": \"done\", \"nazev\": \"titulek\", \"kategorie\": \"obor\", \"popis\": \"detailní popis\", \"nalehavost\": \"Vysoká/Střední/Nízká\", \"odhad_ceny\": \"cena Kč\", \"rada\": \"krátká rada\"}";
+                                 "Pokud máš vše: {\"status\": \"done\", \"nazev\": \"titulek\", \"kategorie\": \"POUZE JEDNA Z: Instalatérství, Elektrikář, Malíř, Tesař, Zámečník, Ostatní\", \"popis\": \"detailní popis\", \"nalehavost\": \"Vysoká/Střední/Nízká\", \"odhad_ceny\": \"cena Kč\", \"rada\": \"krátká rada\"}";
             
             let parts = [{ text: userInputText }];
             if (currentBase64Image && currentMimeType) {
