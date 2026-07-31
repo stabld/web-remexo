@@ -1,5 +1,37 @@
-// Pokud by API hlásilo, že model neexistuje, změň jen tento řádek (např. na "gemini-3.5-flash")
+// Aktuální model. Seznam dostupných modelů: https://generativelanguage.googleapis.com/v1beta/models?key=TVUJ_KLIC
 const MODEL = 'gemini-3.5-flash';
+
+// AI občas vrátí JSON, ve kterém jsou uvnitř textu skutečná zalomení řádků
+// (např. popis závady s odrážkami). Takový JSON se nedá přečíst, tak ho tady srovnáme.
+function opravJson(raw) {
+    let s = raw.replace(/```json/gi, '').replace(/```/g, '').trim();
+
+    const zacatek = s.indexOf('{');
+    const konec = s.lastIndexOf('}');
+    if (zacatek !== -1 && konec !== -1) {
+        s = s.substring(zacatek, konec + 1);
+    }
+
+    let vysledek = '';
+    let vTextu = false;
+    let escapovano = false;
+
+    for (const znak of s) {
+        if (escapovano) { vysledek += znak; escapovano = false; continue; }
+        if (znak === '\\') { vysledek += znak; escapovano = true; continue; }
+        if (znak === '"') { vTextu = !vTextu; vysledek += znak; continue; }
+
+        if (vTextu) {
+            if (znak === '\n') { vysledek += '\\n'; continue; }
+            if (znak === '\r') { vysledek += '\\r'; continue; }
+            if (znak === '\t') { vysledek += '\\t'; continue; }
+        }
+
+        vysledek += znak;
+    }
+
+    return vysledek;
+}
 
 export default async function handler(req, res) {
     if (req.method !== 'POST') {
@@ -31,7 +63,12 @@ export default async function handler(req, res) {
 
         const payload = {
             contents: [{ role: 'user', parts: contentParts }],
-            generationConfig: { maxOutputTokens: 1024 }
+            generationConfig: {
+                maxOutputTokens: 4096,
+                // Nové Gemini modely jinak spotřebují limit na interní "přemýšlení"
+                // a odpověď se usekne v půlce
+                thinkingConfig: { thinkingBudget: 0 }
+            }
         };
 
         if (systemPrompt) {
@@ -60,9 +97,32 @@ export default async function handler(req, res) {
             return res.status(response.status).json({ error: data.error?.message || 'Chyba od API' });
         }
 
-        const text = data.candidates?.[0]?.content?.parts?.[0]?.text;
+        const candidate = data.candidates?.[0];
+        let text = candidate?.content?.parts?.[0]?.text;
+
         if (!text) {
             return res.status(500).json({ error: 'AI nevrátila žádnou odpověď.' });
+        }
+
+        // Když se odpověď usekne kvůli limitu, radši to řekneme narovinu,
+        // než aby frontend spadl na rozbitém JSONu
+        if (candidate.finishReason === 'MAX_TOKENS') {
+            return res.status(500).json({ error: 'Odpověď AI byla příliš dlouhá a usekla se. Zkuste problém popsat stručněji.' });
+        }
+
+        // U JSON odpovědí ověříme, že se dá přečíst, a případně ji opravíme
+        if (useJson) {
+            try {
+                JSON.parse(text.replace(/```json/gi, '').replace(/```/g, '').trim());
+            } catch (e) {
+                const opraveno = opravJson(text);
+                try {
+                    JSON.parse(opraveno);
+                    text = opraveno;
+                } catch (e2) {
+                    return res.status(500).json({ error: 'AI vrátila odpověď v nečitelném formátu. Zkuste to prosím znovu.' });
+                }
+            }
         }
 
         return res.status(200).json({ text });
