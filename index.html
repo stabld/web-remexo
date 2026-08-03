@@ -72,6 +72,23 @@
         .nav-link-active::after { content:''; position:absolute; bottom:-4px; left:0; width:100%; height:2px; background-color:#f59e0b; }
         #chat-widget { transition: all 0.3s cubic-bezier(0.4,0,0.2,1); transform: translateY(20px); opacity:0; pointer-events:none; }
         #chat-widget.open { transform: translateY(0); opacity:1; pointer-events:auto; }
+
+        /* Stránka se nesmí dát táhnout do stran – jinak svislé posouvání
+           na mobilu poskakuje a působí rozbitě */
+        html, body { overflow-x: hidden; max-width: 100%; }
+
+        /* Chat s Bořkem měl pevných 380 px, což je víc než šířka běžného
+           telefonu (360 px). Na mobilu ho roztáhneme na displej. */
+        @media (max-width: 480px) {
+            #chat-widget {
+                width: calc(100vw - 24px) !important;
+                max-width: calc(100vw - 24px) !important;
+                height: 70vh !important;
+                max-height: calc(100vh - 140px) !important;
+            }
+            #chat-toggle { width: 60px !important; height: 60px !important; }
+            #chat-toggle img, #chat-toggle i { transform: scale(0.75); }
+        }
         .chat-bubble-borek { background-color:#f1f5f9; color:#0f172a; border-radius:18px 18px 18px 2px; }
         .dark .chat-bubble-borek { background-color:#1e293b; color:#f8fafc; }
         .chat-bubble-user { background-color:#f59e0b; color:white; border-radius:18px 18px 2px 18px; }
@@ -105,7 +122,7 @@
         .reveal-delay-5 { transition-delay:0.7s; }
 
         /* MOBILNÍ MENU */
-        #mobile-menu { position:fixed; top:0; right:0; height:100vh; width:80%; max-width:320px; background:white; z-index:300; transform:translateX(100%); transition:transform 0.35s cubic-bezier(0.4,0,0.2,1); box-shadow:-10px 0 40px rgba(0,0,0,0.15); }
+        #mobile-menu { position:fixed; top:0; right:0; height:100vh; height:100dvh; width:80%; max-width:320px; background:white; z-index:300; transform:translateX(100%); transition:transform 0.35s cubic-bezier(0.4,0,0.2,1); box-shadow:-10px 0 40px rgba(0,0,0,0.15); overflow-y:auto; -webkit-overflow-scrolling:touch; overscroll-behavior:contain; padding-bottom:calc(24px + env(safe-area-inset-bottom)); }
         .dark #mobile-menu { background:#0f172a; }
         #mobile-menu.open { transform:translateX(0); }
         #mobile-overlay { position:fixed; inset:0; z-index:299; background:rgba(0,0,0,0.5); opacity:0; pointer-events:none; transition:opacity 0.3s ease; backdrop-filter:blur(4px); }
