@@ -170,11 +170,17 @@
                 <a href="#jak-to-funguje" onclick="closeMobileMenu()" class="flex items-center gap-4 px-4 py-3 rounded-2xl font-bold text-slate-700 dark:text-slate-300 hover:bg-amber-50 dark:hover:bg-slate-800 hover:text-amber-500 transition">
                     <i class="fa-solid fa-list-check w-5 text-amber-500"></i> Jak to funguje
                 </a>
+                <a href="#remesla" onclick="closeMobileMenu()" class="flex items-center gap-4 px-4 py-3 rounded-2xl font-bold text-slate-700 dark:text-slate-300 hover:bg-amber-50 dark:hover:bg-slate-800 hover:text-amber-500 transition">
+                    <i class="fa-solid fa-screwdriver-wrench w-5 text-amber-500"></i> Co Remexo řeší
+                </a>
                 <a href="#ai-poptavka" onclick="closeMobileMenu()" class="flex items-center gap-4 px-4 py-3 rounded-2xl font-bold text-slate-700 dark:text-slate-300 hover:bg-amber-50 dark:hover:bg-slate-800 hover:text-amber-500 transition">
                     <i class="fa-solid fa-wand-magic-sparkles w-5 text-amber-500"></i> Ukázka
                 </a>
                 <a href="#pro-remeslniky" onclick="closeMobileMenu()" class="flex items-center gap-4 px-4 py-3 rounded-2xl font-bold text-slate-700 dark:text-slate-300 hover:bg-amber-50 dark:hover:bg-slate-800 hover:text-amber-500 transition">
                     <i class="fa-solid fa-hard-hat w-5 text-amber-500"></i> Pro řemeslníky
+                </a>
+                <a href="#o-zakladateli" onclick="closeMobileMenu()" class="flex items-center gap-4 px-4 py-3 rounded-2xl font-bold text-slate-700 dark:text-slate-300 hover:bg-amber-50 dark:hover:bg-slate-800 hover:text-amber-500 transition">
+                    <i class="fa-solid fa-user w-5 text-amber-500"></i> O zakladateli
                 </a>
                 <a href="#faq" onclick="closeMobileMenu()" class="flex items-center gap-4 px-4 py-3 rounded-2xl font-bold text-slate-700 dark:text-slate-300 hover:bg-amber-50 dark:hover:bg-slate-800 hover:text-amber-500 transition">
                     <i class="fa-solid fa-circle-question w-5 text-amber-500"></i> FAQ
@@ -204,11 +210,14 @@
                     </div>
                     
                     <!-- STŘED: Navigace v jednom řádku (vycentrováno) -->
-                    <div class="hidden lg:flex space-x-4 xl:space-x-7 items-center justify-center shrink-0" id="nav-links">
-                        <a href="#jak-to-funguje" class="nav-item relative text-sm font-bold whitespace-nowrap text-slate-600 dark:text-slate-400 hover:text-remexo-500 transition">Jak to funguje</a>
-                        <a href="#ai-poptavka" class="nav-item relative text-sm font-bold whitespace-nowrap text-slate-600 dark:text-slate-400 hover:text-remexo-500 transition">Ukázka</a>
-                        <a href="#pro-remeslniky" class="nav-item relative text-sm font-bold whitespace-nowrap text-slate-600 dark:text-slate-400 hover:text-remexo-500 transition">Pro řemeslníky</a>
-                        <a href="#faq" class="nav-item relative text-sm font-bold whitespace-nowrap text-slate-600 dark:text-slate-400 hover:text-remexo-500 transition">FAQ</a>
+                    <div class="hidden lg:flex space-x-3 xl:space-x-6 items-center justify-center shrink-0" id="nav-links">
+                        <a href="#jak-to-funguje" class="nav-item relative text-[13px] xl:text-sm font-bold whitespace-nowrap text-slate-600 dark:text-slate-400 hover:text-remexo-500 transition">Jak to funguje</a>
+                        <a href="#remesla" class="nav-item relative text-[13px] xl:text-sm font-bold whitespace-nowrap text-slate-600 dark:text-slate-400 hover:text-remexo-500 transition">Co Remexo řeší</a>
+                        <a href="#ai-poptavka" class="nav-item relative text-[13px] xl:text-sm font-bold whitespace-nowrap text-slate-600 dark:text-slate-400 hover:text-remexo-500 transition">Ukázka</a>
+                        <a href="#pro-remeslniky" class="nav-item relative text-[13px] xl:text-sm font-bold whitespace-nowrap text-slate-600 dark:text-slate-400 hover:text-remexo-500 transition">Pro řemeslníky</a>
+                        <a href="#o-zakladateli" class="nav-item relative text-[13px] xl:text-sm font-bold whitespace-nowrap text-slate-600 dark:text-slate-400 hover:text-remexo-500 transition">O zakladateli</a>
+                        <a href="#faq" class="nav-item relative text-[13px] xl:text-sm font-bold whitespace-nowrap text-slate-600 dark:text-slate-400 hover:text-remexo-500 transition">FAQ</a>
+                        <a href="#kontakt" class="nav-item relative text-[13px] xl:text-sm font-bold whitespace-nowrap text-slate-600 dark:text-slate-400 hover:text-remexo-500 transition">Kontakt</a>
                     </div>
                     
                     <!-- PRAVÁ ČÁST: Tlačítka odtlačená doprava -->
@@ -298,19 +307,16 @@
                     </div>
                 </div>
 
-                <div class="bg-remexo-dark dark:bg-slate-800 rounded-[2.5rem] p-10 lg:p-14 text-center border border-remexo-500/20">
-                    <img src="/logo.png" alt="Remexo" class="h-12 object-contain mx-auto mb-8">
-                    <div class="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-3 text-white">
-                        <span class="font-bold text-lg">Vyfotíš problém</span>
-                        <i class="fa-solid fa-arrow-right text-remexo-500 rotate-90 sm:rotate-0"></i>
-                        <span class="font-bold text-lg">Dostaneš nabídky</span>
-                        <i class="fa-solid fa-arrow-right text-remexo-500 rotate-90 sm:rotate-0"></i>
-                        <span class="font-bold text-lg">Vybereš si</span>
+                <a href="#jak-to-funguje" class="group bg-remexo-dark dark:bg-slate-800 rounded-[2rem] px-8 py-8 sm:px-12 flex flex-col sm:flex-row items-center justify-between gap-6 border border-remexo-500/20 hover:border-remexo-500/60 transition-colors">
+                    <div class="text-center sm:text-left">
+                        <p class="text-white font-extrabold text-xl lg:text-2xl leading-snug">S Remexem se nehoníš za nikým.</p>
+                        <p class="text-slate-300 mt-2 leading-relaxed">Nabídky přijdou k tobě a ty si v klidu porovnáš cenu i termín.</p>
                     </div>
-                    <p class="text-slate-300 mt-8 max-w-lg mx-auto leading-relaxed">
-                        Nehoníš se za jedním řemeslníkem. Přijdou nabídky k tobě a ty si v klidu porovnáš cenu i termín.
-                    </p>
-                </div>
+                    <span class="shrink-0 inline-flex items-center gap-3 text-remexo-500 font-bold whitespace-nowrap">
+                        Jak to funguje
+                        <i class="fa-solid fa-arrow-down group-hover:translate-y-1 transition-transform"></i>
+                    </span>
+                </a>
             </div>
         </section>
 
