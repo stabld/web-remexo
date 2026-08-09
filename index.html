@@ -85,15 +85,17 @@
 
         /* Chat s Bořkem měl pevných 380 px, což je víc než šířka běžného
            telefonu (360 px). Na mobilu ho roztáhneme na displej. */
-        @media (max-width: 480px) {
+        @media (max-width: 639px) {
             #chat-widget {
-                width: calc(100vw - 24px) !important;
+                width: min(calc(100vw - 24px), 380px) !important;
                 max-width: calc(100vw - 24px) !important;
                 height: 70vh !important;
-                max-height: calc(100vh - 140px) !important;
+                height: 70dvh !important;
+                max-height: calc(100dvh - 140px) !important;
             }
             #chat-toggle { width: 60px !important; height: 60px !important; }
             #chat-toggle img, #chat-toggle i { transform: scale(0.75); }
+            #chat-toggle span { border-width: 3px !important; width: 18px !important; height: 18px !important; }
         }
         .chat-bubble-borek { background-color:#f1f5f9; color:#0f172a; border-radius:18px 18px 18px 2px; }
         .dark .chat-bubble-borek { background-color:#1e293b; color:#f8fafc; }
@@ -133,6 +135,113 @@
         #mobile-menu.open { transform:translateX(0); }
         #mobile-overlay { position:fixed; inset:0; z-index:299; background:rgba(0,0,0,0.5); opacity:0; pointer-events:none; transition:opacity 0.3s ease; backdrop-filter:blur(4px); }
         #mobile-overlay.open { opacity:1; pointer-events:auto; }
+
+        /* ==========================================================
+           MOBILNÍ VRSTVA – platí jen do 767 px.
+           Tailwind md: začíná na 768 px, takže tohle nemůže nijak
+           ovlivnit desktopovou verzi. Cílem je zmenšit odsazení,
+           zkrotit typografii a opravit prvky, které přetékaly.
+           ========================================================== */
+        @media (max-width: 767px) {
+
+            /* --- Navigace: nižší lišta, menší logo --- */
+            .glass-nav .h-20 { height: 4rem !important; }
+            .glass-nav img { height: 2.6rem !important; }
+
+            /* --- Svislý rytmus: sekce byly py-20/py-24 = přes 80 px --- */
+            section { padding-top: 3.25rem !important; padding-bottom: 3.25rem !important; }
+            #hero { padding-top: 5.5rem !important; padding-bottom: 2.5rem !important; }
+
+            /* --- Typografie --- */
+            .text-7xl, .text-6xl, .text-5xl { font-size: 2rem !important; line-height: 1.15 !important; }
+            .text-4xl { font-size: 1.75rem !important; line-height: 1.2 !important; }
+            .text-3xl { font-size: 1.45rem !important; line-height: 1.25 !important; }
+            .text-2xl { font-size: 1.25rem !important; line-height: 1.3 !important; }
+            p.text-lg, p.text-xl { font-size: 1.0625rem !important; }
+            .leading-loose { line-height: 1.65 !important; }
+            .tracking-widest { letter-spacing: 0.08em !important; }
+
+            /* --- Odsazení uvnitř karet (p-8 až p-16 bylo 32–64 px) --- */
+            .p-8, .p-10 { padding: 1.5rem !important; }
+            .p-12, .p-14, .p-16 { padding: 1.75rem !important; }
+
+            /* --- Zaoblení: 48px rádius na malé kartě vypadá nafouknutě --- */
+            .rounded-\[3rem\], .rounded-\[2\.5rem\] { border-radius: 1.5rem !important; }
+            .rounded-\[2rem\] { border-radius: 1.25rem !important; }
+            .rounded-3xl { border-radius: 1.25rem !important; }
+
+            /* --- Mezery mezi bloky --- */
+            .mb-16 { margin-bottom: 2.5rem !important; }
+            .mt-16 { margin-top: 2.5rem !important; }
+            .mb-14 { margin-bottom: 2.25rem !important; }
+            .mb-12 { margin-bottom: 2rem !important; }
+            .mt-12 { margin-top: 2rem !important; }
+            .gap-12, .gap-10 { gap: 2rem !important; }
+
+            /* --- Hero: tlačítka přes celou šířku, klidnější mockup --- */
+            #hero .float-anim { animation: none !important; }
+            #hero h1 { font-size: 1.95rem !important; }
+
+            /* --- 4 kroky: menší ikony, kompaktnější karty --- */
+            #jak-to-funguje .grid { gap: 2.5rem 1rem !important; margin-top: 2.5rem !important; }
+            #jak-to-funguje .w-32 { width: 6.5rem !important; height: 6.5rem !important; margin-bottom: 1rem !important; }
+            #jak-to-funguje .rounded-3xl { padding: 1.5rem 1.25rem !important; }
+
+            /* --- Katalog řemesel --- */
+            #katalog-app .tile-item { padding: 1rem 0.75rem !important; gap: 0.75rem !important; }
+            #katalog-app .tile-icon-container { width: 3rem !important; height: 3rem !important; font-size: 1.25rem !important; }
+            #katalog-detail > div { padding: 1.5rem !important; gap: 1.25rem !important; }
+            #katalog-detail .w-24 { width: 3.75rem !important; height: 3.75rem !important; font-size: 1.4rem !important; }
+            #katalog-detail li { font-size: 0.95rem !important; }
+            #katalog-detail ul { gap: 0.75rem !important; margin-bottom: 1.5rem !important; }
+
+            /* --- Ukázka s Bořkem: pole musí mít min. 16px, jinak iOS zoomuje --- */
+            #poptavka-input { font-size: 1rem !important; padding: 1rem !important; }
+            #poptavka-btn { font-size: 1rem !important; padding-top: 1.1rem !important; padding-bottom: 1.1rem !important; }
+            #poptavka-reply-area { gap: 0.5rem !important; }
+            #poptavka-reply-input { font-size: 1rem !important; padding-left: 1.25rem !important; }
+            #poptavka-reply-btn { padding-left: 1.25rem !important; padding-right: 1.25rem !important; }
+            #poptavka-chat-messages { padding: 1rem !important; max-height: 60vh !important; }
+            .poptavka-bubble-user, .poptavka-bubble-ai { max-width: 92% !important; padding: 10px 16px !important; font-size: 0.95rem !important; }
+            #pop-nazev { font-size: 1.35rem !important; }
+            #pop-popis { font-size: 1rem !important; }
+            #poptavka-result .flex-wrap span { font-size: 0.7rem !important; padding: 0.4rem 0.75rem !important; }
+
+            /* --- O zakladateli: fotka 288 px přetékala na 360px displeji --- */
+            #o-zakladateli .w-72 { width: 13.5rem !important; height: 13.5rem !important; max-width: 100% !important; }
+            #o-zakladateli blockquote { padding-left: 1rem !important; }
+            #o-zakladateli blockquote p { font-size: 1rem !important; }
+
+            /* --- Newsletter: přepínač se nevešel na jeden řádek --- */
+            #waitlist-type { flex-wrap: wrap !important; gap: 0.5rem !important; }
+            .wl-type-btn { padding: 0.7rem 1rem !important; font-size: 0.8125rem !important; }
+            #newsletter-email, #newsletter-btn { font-size: 1rem !important; padding-top: 1rem !important; padding-bottom: 1rem !important; }
+            #newsletter-email { padding-left: 1.5rem !important; }
+
+            /* --- FAQ --- */
+            #faq h3 { font-size: 1.05rem !important; }
+            #faq p { font-size: 0.95rem !important; }
+
+            /* --- Patička --- */
+            footer .grid { gap: 2rem !important; }
+            footer .pt-16 { padding-top: 2.5rem !important; }
+            footer .h-64 { height: 12rem !important; }
+
+            /* --- Modály a cookie lišta --- */
+            .modal-box { padding: 1.5rem !important; border-radius: 1.5rem !important; max-height: 88dvh !important; }
+            #cookie-banner { padding: 1.25rem !important; }
+            #cookie-banner .gap-6 { gap: 1rem !important; }
+            #cookie-banner .text-sm { font-size: 0.8125rem !important; line-height: 1.5 !important; }
+
+            /* --- Plovoucí chat ať nesedí na obsahu --- */
+            .fixed.bottom-6.right-6 { bottom: 1rem !important; right: 1rem !important; }
+
+            /* Kotvy končily schované pod fixní lištou */
+            section[id], footer[id] { scroll-margin-top: 4.5rem !important; }
+
+            /* Nic nesmí přetéct do stran */
+            img, iframe, video { max-width: 100%; }
+        }
     </style>
     
     <script>
