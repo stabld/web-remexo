@@ -178,8 +178,9 @@
             .mt-12 { margin-top: 2rem !important; }
             .gap-12, .gap-10 { gap: 2rem !important; }
 
-            /* --- Hero: tlačítka přes celou šířku, klidnější mockup --- */
-            #hero .float-anim { animation: none !important; }
+            /* --- Hero: ukázka konverzace s Bořkem se na mobilu neukazuje,
+                   na úzkém displeji zabírala celou obrazovku a tříštila hero --- */
+            #hero-mockup { display: none !important; }
             #hero h1 { font-size: 1.95rem !important; }
 
             /* --- 4 kroky: menší ikony, kompaktnější karty --- */
@@ -367,7 +368,7 @@
                     </p>
                 </div>
 
-                <div class="relative reveal reveal-delay-5 mt-4 lg:mt-0">
+                <div id="hero-mockup" class="relative reveal reveal-delay-5 mt-4 lg:mt-0">
                     <div class="float-anim bg-white dark:bg-slate-800 p-6 sm:p-8 rounded-[2.5rem] shadow-2xl border border-slate-100 dark:border-slate-700 relative z-10">
                         <div class="flex items-center gap-4 mb-6">
                             <img src="/borek-hlava.PNG" alt="Asistent Bořek" class="w-14 h-14 object-contain">
