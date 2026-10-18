@@ -691,9 +691,9 @@
             <div class="grid md:grid-cols-2 gap-10 items-center">
                 <div>
                     <p class="text-xs font-bold text-remexo-500 uppercase tracking-widest mb-4">Náš model</p>
-                    <h3 class="text-3xl lg:text-4xl font-extrabold text-white mb-5 leading-tight">Z každé zakázky ti zůstane všechno.</h3>
+                    <h3 class="text-3xl lg:text-4xl font-extrabold text-white mb-5 leading-tight">Platíš až tehdy, když ti Remexo opravdu něco přinese.</h3>
                     <p class="text-slate-300 leading-relaxed">
-                        Neúčtujeme si provizi ze zakázek. Platíš jedno měsíční předplatné za přístup k poptávkám a co si vyděláš, je tvoje.
+                        Neúčtujeme si provizi ze zakázek. Platíš za poptávky, které ti doručíme, a co si vyděláš, je celé tvoje.
                     </p>
                 </div>
                 <div class="bg-white/5 border border-white/10 rounded-3xl p-8">
@@ -702,7 +702,7 @@
                         <span class="text-slate-300 font-bold">provize ze zakázky</span>
                     </div>
                     <p class="text-slate-400 text-sm leading-relaxed">
-                        Konkrétní výši předplatného oznámíme před spuštěním. Kdo se přidá teď, dostane ji jako první a bez závazku.
+                        Konkrétní cenu poptávek oznámíme před spuštěním. Pět řemeslníků z Olomouce, kteří s námi začnou, bude mít Remexo zdarma navždy.
                     </p>
                 </div>
             </div>
@@ -786,7 +786,7 @@
                     </div>
                     <div class="bg-slate-50 dark:bg-slate-900 p-8 lg:p-10 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-sm transition hover:shadow-md">
                         <h3 class="text-xl lg:text-2xl font-bold mb-3 dark:text-white">Kolik Remexo stojí?</h3>
-                        <p class="text-slate-500 dark:text-slate-400 leading-relaxed text-base lg:text-lg">Zadání poptávky a příjem nabídek jsou pro zákazníka zdarma. Řemeslníci platí měsíční předplatné za přístup k poptávkám, ale žádnou provizi z jednotlivých zakázek. Konkrétní ceny zveřejníme před spuštěním.</p>
+                        <p class="text-slate-500 dark:text-slate-400 leading-relaxed text-base lg:text-lg">Zadání poptávky a příjem nabídek jsou pro zákazníka zdarma. Řemeslníci platí za poptávky, které jim doručíme, ale žádnou provizi z jednotlivých zakázek. Prvních pět řemeslníků z Olomouce má Remexo zdarma navždy. Konkrétní ceny zveřejníme před spuštěním.</p>
                     </div>
                     <div class="bg-slate-50 dark:bg-slate-900 p-8 lg:p-10 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-sm transition hover:shadow-md">
                         <h3 class="text-xl lg:text-2xl font-bold mb-3 dark:text-white">Pro koho je Remexo?</h3>
@@ -870,7 +870,7 @@
                     <h4 class="font-extrabold text-white mb-5 uppercase tracking-widest text-xs">Řemeslníci</h4>
                     <ul class="space-y-3 text-sm flex flex-col items-start">
                         <li><a href="#pro-remeslniky" class="text-slate-400 hover:text-remexo-500 transition">Proč Remexo</a></li>
-                        <li><a href="#pro-remeslniky" class="text-slate-400 hover:text-remexo-500 transition">Provize a předplatné</a></li>
+                        <li><a href="#pro-remeslniky" class="text-slate-400 hover:text-remexo-500 transition">Ceny pro řemeslníky</a></li>
                         <li><a href="#newsletter" class="text-slate-400 hover:text-remexo-500 transition">Chci získávat zakázky</a></li>
                     </ul>
                 </div>
@@ -1208,7 +1208,7 @@
             appendMessage('user', text);
             inputEl.value = '';
             
-            const systemPrompt = "Jsi Bořek, asistent platformy Remexo. Odpovídej stručně a česky. FAKTA: Remexo je platforma pro drobné domácí opravy, startuje na podzim 2026 v Olomouci. Zákazník vyfotí problém, Remexo z toho vytvoří poptávku a řemeslníci pošlou nabídky. Pro zákazníka zdarma, řemeslníci platí měsíční předplatné bez provize ze zakázek. ZÁSADNÍ: Ověřování řemeslníků, platby přes platformu, úschova peněz (escrow), pojištění a hodnocení zatím NEJSOU spuštěné - pokud se na ně někdo zeptá, řekni upřímně, že je připravujeme. Nikdy netvrď, že už fungují. Pokud uživatel popisuje problém v domácnosti, doporuč mu zapsat se na čekací listinu.";
+            const systemPrompt = "Jsi Bořek, asistent platformy Remexo. Odpovídej stručně a česky. FAKTA: Remexo je platforma pro drobné domácí opravy, startuje na podzim 2026 v Olomouci. Zákazník vyfotí problém, Remexo z toho vytvoří poptávku a řemeslníci pošlou nabídky. Pro zákazníka zdarma, řemeslníci platí za poptávky, které jim Remexo doručí, bez provize ze zakázek (cenu zatím neoznámili, před spuštěním ji zveřejní); prvních pět řemeslníků z Olomouce má Remexo zdarma navždy. ZÁSADNÍ: Ověřování řemeslníků, platby přes platformu, úschova peněz (escrow), pojištění a hodnocení zatím NEJSOU spuštěné - pokud se na ně někdo zeptá, řekni upřímně, že je připravujeme. Nikdy netvrď, že už fungují. Pokud uživatel popisuje problém v domácnosti, doporuč mu zapsat se na čekací listinu.";
             try {
                 const responseText = await callGeminiAPI([{ text: text }], systemPrompt, false);
                 appendMessage('borek', responseText.replace(cleanRegex, '').trim());
